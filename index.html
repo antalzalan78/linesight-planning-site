@@ -57,6 +57,13 @@
     content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;
     border-radius:50%;background:radial-gradient(circle,rgba(31,163,140,.25),transparent 70%);
   }
+  .hero-art{
+    position:absolute;top:0;right:0;height:100%;width:62%;pointer-events:none;
+    -webkit-mask-image:linear-gradient(to right,transparent,black 45%);
+    mask-image:linear-gradient(to right,transparent,black 45%);
+  }
+  .hero-art svg{width:100%;height:100%}
+  @media(max-width:760px){.hero-art{width:100%;opacity:.55}}
   .hero .wrap{position:relative;z-index:1}
   .kicker{display:inline-block;background:rgba(31,163,140,.18);border:1px solid rgba(31,163,140,.45);color:#7fe0cd;padding:4px 14px;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.6px;text-transform:uppercase;margin-bottom:22px}
   .hero h1{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.15;font-weight:800;max-width:680px}
@@ -155,6 +162,42 @@
 </header>
 
 <section class="hero" id="top">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- faint planning grid -->
+      <g stroke="rgba(255,255,255,.05)" stroke-width="1">
+        <line x1="0" y1="100" x2="900" y2="100"/><line x1="0" y1="200" x2="900" y2="200"/>
+        <line x1="0" y1="300" x2="900" y2="300"/><line x1="0" y1="400" x2="900" y2="400"/>
+        <line x1="0" y1="500" x2="900" y2="500"/>
+        <line x1="150" y1="0" x2="150" y2="600"/><line x1="300" y1="0" x2="300" y2="600"/>
+        <line x1="450" y1="0" x2="450" y2="600"/><line x1="600" y1="0" x2="600" y2="600"/>
+        <line x1="750" y1="0" x2="750" y2="600"/>
+      </g>
+      <!-- gantt-style schedule bars -->
+      <g>
+        <rect x="180" y="120" width="220" height="26" rx="8" fill="rgba(31,163,140,.28)"/>
+        <rect x="420" y="120" width="120" height="26" rx="8" fill="rgba(31,163,140,.14)"/>
+        <rect x="260" y="180" width="300" height="26" rx="8" fill="rgba(240,168,72,.22)"/>
+        <rect x="580" y="180" width="110" height="26" rx="8" fill="rgba(240,168,72,.12)"/>
+        <rect x="200" y="240" width="150" height="26" rx="8" fill="rgba(255,255,255,.12)"/>
+        <rect x="370" y="240" width="260" height="26" rx="8" fill="rgba(31,163,140,.20)"/>
+        <rect x="310" y="300" width="200" height="26" rx="8" fill="rgba(255,255,255,.08)"/>
+        <rect x="530" y="300" width="230" height="26" rx="8" fill="rgba(240,168,72,.16)"/>
+      </g>
+      <!-- rising capacity trend line -->
+      <polyline points="160,480 300,455 430,465 560,415 690,395 830,340"
+                fill="none" stroke="rgba(31,163,140,.55)" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="#1fa38c">
+        <circle cx="300" cy="455" r="5" opacity=".8"/>
+        <circle cx="430" cy="465" r="5" opacity=".8"/>
+        <circle cx="560" cy="415" r="5" opacity=".8"/>
+        <circle cx="690" cy="395" r="5" opacity=".8"/>
+        <circle cx="830" cy="340" r="6"/>
+      </g>
+      <circle cx="830" cy="340" r="14" fill="none" stroke="rgba(240,168,72,.5)" stroke-width="2"/>
+    </svg>
+  </div>
   <div class="wrap">
     <span class="kicker">Independent consultancy · Netherlands</span>
     <h1>Clear sight on your production capacity, <em>before</em> it becomes a problem.</h1>
