@@ -125,14 +125,29 @@
   .contact h2{color:#fff}
   .contact .sec-intro{margin-left:auto;margin-right:auto;color:#c9d6e2}
   .contact-box{
-    max-width:480px;margin:0 auto;background:rgba(255,255,255,.06);
+    max-width:520px;margin:0 auto;background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:34px 30px;
+    text-align:left;
   }
-  .contact-box p{color:#c9d6e2;font-size:.98rem}
-  .contact-box .soon{
-    display:inline-block;margin-top:16px;padding:10px 22px;border-radius:10px;
-    background:rgba(240,168,72,.15);border:1px dashed rgba(240,168,72,.5);color:var(--amber);font-weight:600;
+  .contact-box label{display:block;font-size:.85rem;font-weight:600;color:#c9d6e2;margin:16px 0 6px}
+  .contact-box label:first-of-type{margin-top:0}
+  .contact-box label .opt{font-weight:400;color:#8fa2b4}
+  .contact-box input,.contact-box textarea{
+    width:100%;padding:11px 14px;border-radius:9px;font-size:.97rem;font-family:inherit;
+    background:rgba(15,36,56,.55);border:1px solid rgba(255,255,255,.22);color:#fff;
+    transition:border-color .15s,box-shadow .15s;
   }
+  .contact-box input:focus,.contact-box textarea:focus{
+    outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(31,163,140,.25);
+  }
+  .contact-box input::placeholder,.contact-box textarea::placeholder{color:#748699}
+  .contact-box textarea{resize:vertical;min-height:120px}
+  .contact-box .btn-primary{border:none;cursor:pointer;width:100%;margin-top:22px;font-family:inherit}
+  .contact-box .btn-primary:disabled{opacity:.6;cursor:wait;transform:none}
+  .form-msg{margin-top:16px;padding:12px 16px;border-radius:9px;font-size:.94rem;display:none}
+  .form-msg.ok{display:block;background:rgba(31,163,140,.18);border:1px solid rgba(31,163,140,.5);color:#7fe0cd}
+  .form-msg.err{display:block;background:rgba(224,90,90,.15);border:1px solid rgba(224,90,90,.5);color:#f0a8a8}
+  .hp-field{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
 
   /* Footer */
   footer{background:#0b1c2c;color:#8fa2b4;padding:30px 0;font-size:.88rem}
@@ -311,8 +326,24 @@
     <h2>Let's talk about your capacity challenge</h2>
     <p class="sec-intro">Whether it's a one-off capacity study or ongoing planning support — a short call is the easiest way to find out if I can help.</p>
     <div class="contact-box">
-      <p>Contact details will be published here shortly.</p>
-      <span class="soon">Contact form coming soon</span>
+      <form id="contact-form" novalidate>
+        <input type="hidden" name="access_key" value="2cae576a-41c7-4df8-a64c-cc2c230de2d1">
+        <input type="hidden" name="subject" value="New enquiry via linesightplanning website">
+        <input type="hidden" name="from_name" value="Linesight Planning website">
+        <div class="hp-field" aria-hidden="true">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+        </div>
+        <label for="cf-name">Name</label>
+        <input id="cf-name" type="text" name="name" placeholder="Your name" required>
+        <label for="cf-email">Email</label>
+        <input id="cf-email" type="email" name="email" placeholder="you@company.com" required>
+        <label for="cf-company">Company <span class="opt">(optional)</span></label>
+        <input id="cf-company" type="text" name="company" placeholder="Company name">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Tell me briefly about your capacity challenge…" required></textarea>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <div class="form-msg" id="form-msg" role="status"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -323,6 +354,44 @@
     <span>ZZP · Netherlands · KvK registration pending</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  var form = document.getElementById('contact-form');
+  var msg = document.getElementById('form-msg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'form-msg';
+    if (!form.checkValidity()) {
+      msg.className = 'form-msg err';
+      msg.textContent = 'Please fill in your name, a valid email address and a message.';
+      return;
+    }
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    }).then(function(res){ return res.json(); }).then(function(data){
+      if (data.success) {
+        msg.className = 'form-msg ok';
+        msg.textContent = 'Thank you — your message has been sent. I\'ll get back to you within one working day.';
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    }).catch(function(){
+      msg.className = 'form-msg err';
+      msg.textContent = 'Sorry, something went wrong. Please try again in a moment.';
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
