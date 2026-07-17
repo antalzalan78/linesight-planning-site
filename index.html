@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linesight Planning — Capacity Planning &amp; Supply Chain Consultancy</title>
+<meta name="description" content="Linesight Planning is an independent consultancy helping FMCG and manufacturing companies with capacity planning, S&OP support and line performance analysis.">
+<style>
+  :root{
+    --navy:#0f2438;
+    --navy-2:#16324c;
+    --teal:#1fa38c;
+    --teal-dark:#157a69;
+    --amber:#f0a848;
+    --ink:#1c2b3a;
+    --muted:#5a6b7d;
+    --bg:#f7f9fb;
+    --card:#ffffff;
+    --line:#e3e9ef;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,36,56,.97);
+    backdrop-filter:blur(6px);
+    color:#fff;
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.1rem;letter-spacing:.2px;color:#fff;text-decoration:none}
+  .brand svg{flex:0 0 auto}
+  .nav-links{display:flex;gap:26px}
+  .nav-links a{color:#c9d6e2;text-decoration:none;font-size:.95rem;transition:color .15s}
+  .nav-links a:hover{color:#fff}
+  .nav-links a.cta{color:var(--amber);font-weight:600}
+  @media(max-width:640px){.nav-links{gap:16px;font-size:.85rem}.nav-links a{font-size:.85rem}}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,#1b4059 100%);
+    color:#fff;
+    padding:88px 0 96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;
+    border-radius:50%;background:radial-gradient(circle,rgba(31,163,140,.25),transparent 70%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{display:inline-block;background:rgba(31,163,140,.18);border:1px solid rgba(31,163,140,.45);color:#7fe0cd;padding:4px 14px;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.6px;text-transform:uppercase;margin-bottom:22px}
+  .hero h1{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.15;font-weight:800;max-width:680px}
+  .hero h1 em{font-style:normal;color:var(--amber)}
+  .hero p.lead{margin-top:20px;font-size:1.15rem;color:#c9d6e2;max-width:600px}
+  .hero-actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:1rem;transition:transform .12s,box-shadow .12s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 4px 14px rgba(31,163,140,.35)}
+  .btn-primary:hover{background:var(--teal-dark)}
+  .btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+  .btn-ghost:hover{border-color:#fff}
+
+  /* Sections */
+  section{padding:76px 0}
+  .sec-kicker{color:var(--teal);font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-size:.8rem}
+  h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;margin:8px 0 14px;color:var(--navy)}
+  .sec-intro{color:var(--muted);max-width:620px;margin-bottom:40px}
+
+  /* Services */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;transition:box-shadow .15s,transform .15s;
+  }
+  .card:hover{box-shadow:0 10px 28px rgba(15,36,56,.09);transform:translateY(-2px)}
+  .card .icon{
+    width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--teal),#2bbfa4);margin-bottom:18px;
+  }
+  .card h3{font-size:1.08rem;margin-bottom:8px;color:var(--navy)}
+  .card p{font-size:.94rem;color:var(--muted)}
+
+  /* Approach */
+  .approach{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;counter-reset:step}
+  .step{position:relative;padding:26px 22px 22px;border-radius:var(--radius);background:var(--bg);border:1px solid var(--line)}
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--amber);
+    font-weight:800;font-size:.95rem;margin-bottom:14px;
+  }
+  .step h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+  .step p{font-size:.93rem;color:var(--muted)}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+  .about p{color:var(--ink);margin-bottom:16px}
+  .fact-box{background:var(--navy);color:#fff;border-radius:var(--radius);padding:28px 26px}
+  .fact-box h3{font-size:1rem;color:var(--amber);text-transform:uppercase;letter-spacing:.6px;margin-bottom:16px}
+  .fact-box ul{list-style:none}
+  .fact-box li{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:.95rem;color:#d7e1ea;display:flex;gap:10px}
+  .fact-box li:last-child{border-bottom:none}
+  .fact-box li::before{content:"✓";color:var(--teal);font-weight:700}
+
+  /* Contact */
+  .contact{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;text-align:center}
+  .contact h2{color:#fff}
+  .contact .sec-intro{margin-left:auto;margin-right:auto;color:#c9d6e2}
+  .contact-box{
+    max-width:480px;margin:0 auto;background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:34px 30px;
+  }
+  .contact-box p{color:#c9d6e2;font-size:.98rem}
+  .contact-box .soon{
+    display:inline-block;margin-top:16px;padding:10px 22px;border-radius:10px;
+    background:rgba(240,168,72,.15);border:1px dashed rgba(240,168,72,.5);color:var(--amber);font-weight:600;
+  }
+
+  /* Footer */
+  footer{background:#0b1c2c;color:#8fa2b4;padding:30px 0;font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  footer a{color:#c9d6e2;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Linesight Planning home">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="16" width="5" height="9" rx="1.5" fill="#1fa38c"/>
+        <rect x="11.5" y="10" width="5" height="15" rx="1.5" fill="#f0a848"/>
+        <rect x="21" y="4" width="5" height="21" rx="1.5" fill="#ffffff"/>
+      </svg>
+      Linesight&nbsp;Planning
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="kicker">Independent consultancy · Netherlands</span>
+    <h1>Clear sight on your production capacity, <em>before</em> it becomes a problem.</h1>
+    <p class="lead">Linesight Planning helps FMCG and manufacturing companies turn demand, line performance and workforce data into confident capacity decisions.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#services">Explore services</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-kicker">Services</div>
+    <h2>What I can do for you</h2>
+    <p class="sec-intro">Hands-on planning expertise for factories that need clarity on capacity, backlogs and staffing — without heavy software projects.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 20h18"/><rect x="5" y="12" width="3.5" height="8" rx="1"/><rect x="10.5" y="8" width="3.5" height="12" rx="1"/><rect x="16" y="4" width="3.5" height="16" rx="1"/></svg>
+        </div>
+        <h3>Capacity planning &amp; scenario modelling</h3>
+        <p>Monthly and mid-term capacity plans per line and product group — what-if scenarios for demand peaks, shutdowns and new SKUs.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+        </div>
+        <h3>S&amp;OP and supply planning support</h3>
+        <p>Support for your S&amp;OP cycle: demand-supply balancing, backlog recovery plans, and clear inputs for management decisions.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/></svg>
+        </div>
+        <h3>Line performance &amp; OEE analysis</h3>
+        <p>Understand where capacity leaks away: OEE breakdowns, changeover impact and realistic run-rate assumptions per line.</p>
+      </div>
+      <div class="card">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+        </div>
+        <h3>Lightweight planning tools</h3>
+        <p>Practical, browser-based planning tools and dashboards tailored to your factory — no license fees, no IT project required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="approach">
+  <div class="wrap">
+    <div class="sec-kicker">Approach</div>
+    <h2>How I work</h2>
+    <p class="sec-intro">Short, focused engagements that leave your team with a working process — not a slide deck.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>Understand</h3>
+        <p>A quick scan of your lines, demand picture and current planning process. We agree on the question to answer.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>Build</h3>
+        <p>I build the capacity model or tool with your real data — iterating with your planners, not around them.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>Hand over</h3>
+        <p>Your team runs it. Clear documentation, a working routine, and follow-up support when you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-kicker">About</div>
+    <h2>Planning experience from the factory floor up</h2>
+    <div class="about-grid">
+      <div class="about">
+        <p>Linesight Planning is the independent consultancy of a supply-chain professional with hands-on capacity and production planning experience in FMCG manufacturing in the Netherlands.</p>
+        <p>I've spent my career where the plan meets the production line: balancing demand against real line capabilities, OEE, changeovers, maintenance windows and workforce availability. That's the perspective I bring to every engagement — practical, numbers-driven, and grounded in how factories actually run.</p>
+        <p>Registered as a ZZP (independent contractor) in the Netherlands, available for projects on-site or remote.</p>
+      </div>
+      <div class="fact-box">
+        <h3>At a glance</h3>
+        <ul>
+          <li>FMCG &amp; manufacturing focus</li>
+          <li>Capacity, S&amp;OP and line planning</li>
+          <li>Based in the Netherlands</li>
+          <li>On-site or remote engagements</li>
+          <li>English working language</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-kicker" style="color:#7fe0cd">Contact</div>
+    <h2>Let's talk about your capacity challenge</h2>
+    <p class="sec-intro">Whether it's a one-off capacity study or ongoing planning support — a short call is the easiest way to find out if I can help.</p>
+    <div class="contact-box">
+      <p>Contact details will be published here shortly.</p>
+      <span class="soon">Contact form coming soon</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Linesight Planning</span>
+    <span>ZZP · Netherlands · KvK registration pending</span>
+  </div>
+</footer>
+
+</body>
+</html>
