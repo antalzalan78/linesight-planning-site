@@ -157,6 +157,33 @@
   .step p{font-size:.93rem;color:var(--muted)}
 
   /* About */
+  .profile-head{
+    display:flex;gap:28px;align-items:center;margin:10px 0 40px;
+    padding:26px 30px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:0 4px 18px rgba(15,36,56,.06);
+  }
+  .avatar{
+    width:132px;height:132px;border-radius:50%;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:2.4rem;letter-spacing:1px;color:#fff;
+    background:linear-gradient(135deg,var(--navy) 20%,var(--teal));
+    border:4px solid #fff;box-shadow:0 4px 14px rgba(15,36,56,.18);
+  }
+  .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+  .profile-info h3{font-size:1.4rem;color:var(--navy);line-height:1.3}
+  .profile-info h3 .cred{font-weight:600;color:var(--teal);font-size:1.05rem}
+  .profile-info .role{color:var(--muted);font-weight:600;font-size:1rem;margin-top:2px}
+  .profile-meta{margin-top:12px;display:flex;gap:8px 22px;flex-wrap:wrap;align-items:center;font-size:.93rem}
+  .profile-meta .loc{color:var(--muted);display:flex;align-items:center;gap:6px}
+  .profile-meta a.linkedin{
+    display:inline-flex;align-items:center;gap:7px;color:#0a66c2;
+    font-weight:600;text-decoration:none;
+  }
+  .profile-meta a.linkedin:hover{text-decoration:underline}
+  @media(max-width:640px){
+    .profile-head{flex-direction:column;text-align:center;gap:18px}
+    .profile-meta{justify-content:center}
+  }
   .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
   @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
   .about p{color:var(--ink);margin-bottom:16px}
@@ -351,6 +378,23 @@
   <div class="wrap">
     <div class="sec-kicker">About</div>
     <h2>Planning experience from the factory floor up</h2>
+    <div class="profile-head">
+      <div class="avatar" aria-label="Portrait of Zalán Antal">ZA</div>
+      <div class="profile-info">
+        <h3>Zalán Antal<span class="cred">, APICS CPIM</span></h3>
+        <div class="role">Independent Production &amp; Capacity Planning Consultant</div>
+        <div class="profile-meta">
+          <a class="linkedin" href="#" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            LinkedIn
+          </a>
+          <span class="loc">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Based in the Netherlands · on-site across NL &amp; Benelux, remote across Europe
+          </span>
+        </div>
+      </div>
+    </div>
     <div class="about-grid">
       <div class="about">
         <p>Zalan Antal Planning is the independent consultancy of a supply-chain professional with over 10 years in manufacturing operations, including more than 7 years of hands-on production and capacity planning in FMCG manufacturing in the Netherlands.</p>
