@@ -56,6 +56,53 @@
   .hero::after{
     content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;
     border-radius:50%;background:radial-gradient(circle,rgba(31,163,140,.25),transparent 70%);
+    animation:glow-drift 14s ease-in-out infinite alternate;
+  }
+  @keyframes glow-drift{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(-90px,60px) scale(1.25)}
+  }
+  /* hero art animations */
+  .hero-art .bar{
+    transform-box:fill-box;transform-origin:left center;
+    animation:bar-breathe 6s ease-in-out infinite alternate;
+  }
+  @keyframes bar-breathe{
+    from{transform:scaleX(.82);opacity:.7}
+    to{transform:scaleX(1);opacity:1}
+  }
+  .hero-art .trend{
+    stroke-dasharray:760;stroke-dashoffset:760;
+    animation:trend-draw 9s ease-in-out infinite;
+  }
+  @keyframes trend-draw{
+    0%{stroke-dashoffset:760}
+    45%{stroke-dashoffset:0}
+    80%{stroke-dashoffset:0;opacity:1}
+    95%{opacity:0}
+    100%{stroke-dashoffset:760;opacity:0}
+  }
+  .hero-art .pt{opacity:0;animation:pt-pop 9s ease-in-out infinite}
+  @keyframes pt-pop{
+    0%,10%{opacity:0}
+    45%,80%{opacity:1}
+    95%,100%{opacity:0}
+  }
+  .hero-art .flow{
+    transform-box:fill-box;
+    animation:flow-move 11s linear infinite;
+  }
+  @keyframes flow-move{
+    0%{transform:translateX(0);opacity:0}
+    8%{opacity:1}
+    88%{opacity:1}
+    100%{transform:translateX(620px);opacity:0}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero::after,.hero-art .bar,.hero-art .trend,.hero-art .pt,.hero-art .flow{animation:none}
+    .hero-art .trend{stroke-dashoffset:0}
+    .hero-art .pt{opacity:1}
+    .hero-art .flow{opacity:0}
   }
   .hero-art{
     position:absolute;top:0;right:0;height:100%;width:62%;pointer-events:none;
@@ -190,27 +237,33 @@
       </g>
       <!-- gantt-style schedule bars -->
       <g>
-        <rect x="180" y="120" width="220" height="26" rx="8" fill="rgba(31,163,140,.28)"/>
-        <rect x="420" y="120" width="120" height="26" rx="8" fill="rgba(31,163,140,.14)"/>
-        <rect x="260" y="180" width="300" height="26" rx="8" fill="rgba(240,168,72,.22)"/>
-        <rect x="580" y="180" width="110" height="26" rx="8" fill="rgba(240,168,72,.12)"/>
-        <rect x="200" y="240" width="150" height="26" rx="8" fill="rgba(255,255,255,.12)"/>
-        <rect x="370" y="240" width="260" height="26" rx="8" fill="rgba(31,163,140,.20)"/>
-        <rect x="310" y="300" width="200" height="26" rx="8" fill="rgba(255,255,255,.08)"/>
-        <rect x="530" y="300" width="230" height="26" rx="8" fill="rgba(240,168,72,.16)"/>
+        <rect class="bar" style="animation-delay:0s"    x="180" y="120" width="220" height="26" rx="8" fill="rgba(31,163,140,.28)"/>
+        <rect class="bar" style="animation-delay:-2.1s" x="420" y="120" width="120" height="26" rx="8" fill="rgba(31,163,140,.14)"/>
+        <rect class="bar" style="animation-delay:-3.4s" x="260" y="180" width="300" height="26" rx="8" fill="rgba(240,168,72,.22)"/>
+        <rect class="bar" style="animation-delay:-1.2s" x="580" y="180" width="110" height="26" rx="8" fill="rgba(240,168,72,.12)"/>
+        <rect class="bar" style="animation-delay:-4.6s" x="200" y="240" width="150" height="26" rx="8" fill="rgba(255,255,255,.12)"/>
+        <rect class="bar" style="animation-delay:-.8s"  x="370" y="240" width="260" height="26" rx="8" fill="rgba(31,163,140,.20)"/>
+        <rect class="bar" style="animation-delay:-5.3s" x="310" y="300" width="200" height="26" rx="8" fill="rgba(255,255,255,.08)"/>
+        <rect class="bar" style="animation-delay:-2.9s" x="530" y="300" width="230" height="26" rx="8" fill="rgba(240,168,72,.16)"/>
+      </g>
+      <!-- conveyor flow dots -->
+      <g fill="rgba(255,255,255,.35)">
+        <circle class="flow" style="animation-delay:0s"  cx="170" cy="366" r="3.5"/>
+        <circle class="flow" style="animation-delay:-3.7s" cx="170" cy="366" r="3"/>
+        <circle class="flow" style="animation-delay:-7.4s" cx="170" cy="366" r="2.5"/>
       </g>
       <!-- rising capacity trend line -->
-      <polyline points="160,480 300,455 430,465 560,415 690,395 830,340"
+      <polyline class="trend" points="160,480 300,455 430,465 560,415 690,395 830,340"
                 fill="none" stroke="rgba(31,163,140,.55)" stroke-width="3"
                 stroke-linecap="round" stroke-linejoin="round"/>
       <g fill="#1fa38c">
-        <circle cx="300" cy="455" r="5" opacity=".8"/>
-        <circle cx="430" cy="465" r="5" opacity=".8"/>
-        <circle cx="560" cy="415" r="5" opacity=".8"/>
-        <circle cx="690" cy="395" r="5" opacity=".8"/>
-        <circle cx="830" cy="340" r="6"/>
+        <circle class="pt" style="animation-delay:-.9s"  cx="300" cy="455" r="5" opacity=".8"/>
+        <circle class="pt" style="animation-delay:-.6s"  cx="430" cy="465" r="5" opacity=".8"/>
+        <circle class="pt" style="animation-delay:-.3s"  cx="560" cy="415" r="5" opacity=".8"/>
+        <circle class="pt" style="animation-delay:0s"    cx="690" cy="395" r="5" opacity=".8"/>
+        <circle class="pt" style="animation-delay:.3s"   cx="830" cy="340" r="6"/>
       </g>
-      <circle cx="830" cy="340" r="14" fill="none" stroke="rgba(240,168,72,.5)" stroke-width="2"/>
+      <circle class="pt" style="animation-delay:.5s" cx="830" cy="340" r="14" fill="none" stroke="rgba(240,168,72,.5)" stroke-width="2"/>
     </svg>
   </div>
   <div class="wrap">
