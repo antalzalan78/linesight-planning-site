@@ -135,19 +135,35 @@
   h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;margin:8px 0 14px;color:var(--navy)}
   .sec-intro{color:var(--muted);max-width:620px;margin-bottom:40px}
 
-  /* Services */
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-  .card{
+  /* Services / offers */
+  .offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px}
+  .offer{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:28px 24px;transition:box-shadow .15s,transform .15s;
+    border-top:4px solid var(--teal);
+    padding:26px 26px 24px;transition:box-shadow .15s,transform .15s;
+    display:flex;flex-direction:column;
   }
-  .card:hover{box-shadow:0 10px 28px rgba(15,36,56,.09);transform:translateY(-2px)}
-  .card .icon{
-    width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(135deg,var(--teal),#2bbfa4);margin-bottom:18px;
+  .offer:hover{box-shadow:0 10px 28px rgba(15,36,56,.09);transform:translateY(-2px)}
+  .offer .offer-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+  .offer .offer-num{font-weight:800;font-size:.85rem;color:var(--teal);letter-spacing:1px}
+  .offer .dur{
+    font-size:.78rem;font-weight:700;color:#9a6a1e;background:rgba(240,168,72,.16);
+    border:1px solid rgba(240,168,72,.45);border-radius:999px;padding:3px 12px;white-space:nowrap;
   }
-  .card h3{font-size:1.08rem;margin-bottom:8px;color:var(--navy)}
-  .card p{font-size:.94rem;color:var(--muted)}
+  .offer h3{font-size:1.12rem;color:var(--navy);line-height:1.35;margin-bottom:14px}
+  .offer dl{margin:0}
+  .offer dt{
+    font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;
+    color:var(--teal);margin:13px 0 3px;
+  }
+  .offer dt:first-of-type{margin-top:0}
+  .offer dd{font-size:.9rem;color:var(--ink);margin:0}
+  .offer dd.quiet{color:var(--muted)}
+  .more-services{
+    margin-top:28px;padding:16px 22px;background:var(--card);border:1px dashed var(--line);
+    border-radius:var(--radius);font-size:.93rem;color:var(--muted);
+  }
+  .more-services strong{color:var(--navy)}
 
   /* Approach */
   .approach{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -313,45 +329,62 @@
 <section id="services">
   <div class="wrap">
     <div class="sec-kicker">Services</div>
-    <h2>What I can do for you</h2>
-    <p class="sec-intro">Hands-on planning expertise for factories that need clarity on capacity, backlogs and staffing — without heavy software projects.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 20h18"/><rect x="5" y="12" width="3.5" height="8" rx="1"/><rect x="10.5" y="8" width="3.5" height="12" rx="1"/><rect x="16" y="4" width="3.5" height="16" rx="1"/></svg>
+    <h2>Three concrete ways to start</h2>
+    <p class="sec-intro">Each engagement has a clear scope, a concrete deliverable and a business decision it enables — so you know what you get before we start.</p>
+    <div class="offers">
+      <div class="offer">
+        <div class="offer-top">
+          <span class="offer-num">01</span>
+          <span class="dur">3–12 months</span>
         </div>
-        <h3>Capacity planning &amp; scenario modelling</h3>
-        <p>Monthly and mid-term capacity plans per line and product group — what-if scenarios for demand peaks, shutdowns and new SKUs.</p>
+        <h3>Interim Production Planning Support</h3>
+        <dl>
+          <dt>Typical problem</dt>
+          <dd class="quiet">Your planner leaves, goes on leave or the workload doubles — and schedules start slipping within weeks.</dd>
+          <dt>What you get</dt>
+          <dd>Day-to-day production schedules kept running from week one, a documented planning routine, and a structured handover at the end.</dd>
+          <dt>Data needed</dt>
+          <dd class="quiet">Access to your ERP/APS, demand plan and line master data.</dd>
+          <dt>The decision it enables</dt>
+          <dd>Keep delivery commitments reliable while you hire or reorganise — without a rushed recruitment.</dd>
+        </dl>
       </div>
-      <div class="card">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+      <div class="offer">
+        <div class="offer-top">
+          <span class="offer-num">02</span>
+          <span class="dur">2–4 weeks</span>
         </div>
-        <h3>S&amp;OP and supply planning support</h3>
-        <p>Support for your S&amp;OP cycle: demand-supply balancing, backlog recovery plans, and clear inputs for management decisions.</p>
+        <h3>Capacity &amp; Headcount Planning Scan</h3>
+        <dl>
+          <dt>Typical problem</dt>
+          <dd class="quiet">You suspect next year's volumes won't fit your lines or shifts — but there is no number behind the gut feeling.</dd>
+          <dt>What you get</dt>
+          <dd>A capacity model per line and product group, shift &amp; headcount scenarios side by side, and a written recommendation.</dd>
+          <dt>Data needed</dt>
+          <dd class="quiet">12–18 months of demand history plus forecast, line speeds/OEE, shift calendar.</dd>
+          <dt>The decision it enables</dt>
+          <dd>Decide on shift patterns, hiring, overtime or investment with numbers on the table — before the peak hits.</dd>
+        </dl>
       </div>
-      <div class="card">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/></svg>
+      <div class="offer">
+        <div class="offer-top">
+          <span class="offer-num">03</span>
+          <span class="dur">4–8 weeks</span>
         </div>
-        <h3>Line performance &amp; OEE analysis</h3>
-        <p>Understand where capacity leaks away: OEE breakdowns, changeover impact and realistic run-rate assumptions per line.</p>
-      </div>
-      <div class="card">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
-        </div>
-        <h3>Lightweight planning tools</h3>
-        <p>Practical, browser-based planning tools and dashboards tailored to your factory — no license fees, no IT project required.</p>
-      </div>
-      <div class="card">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M17 8h5M19.5 5.5v5"/></svg>
-        </div>
-        <h3>Interim planning support</h3>
-        <p>An experienced planner stepping in when you need one: parental leave, peak seasons, vacancies or system transitions — up and running in days, not months.</p>
+        <h3>Backlog Recovery &amp; Weekly Planning Stabilisation</h3>
+        <dl>
+          <dt>Typical problem</dt>
+          <dd class="quiet">Orders are late, the backlog keeps growing, and every week is firefighting instead of planning.</dd>
+          <dt>What you get</dt>
+          <dd>A prioritised recovery plan with a realistic catch-up date, and a weekly planning cycle — meeting, rules, KPIs — your team keeps running.</dd>
+          <dt>Data needed</dt>
+          <dd class="quiet">Open order book, line capacities and current schedule adherence.</dd>
+          <dt>The decision it enables</dt>
+          <dd>Commit reliable dates to customers, and decide what to expedite, outsource or renegotiate.</dd>
+        </dl>
       </div>
     </div>
+    <p class="more-services"><strong>Also available:</strong> line performance &amp; OEE analysis, custom lightweight planning tools and dashboards, and broader S&amp;OP support — typically as part of the engagements above.</p>
   </div>
 </section>
 
