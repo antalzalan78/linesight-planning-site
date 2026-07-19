@@ -43,7 +43,12 @@
   .nav-links a{color:#c9d6e2;text-decoration:none;font-size:.95rem;transition:color .15s}
   .nav-links a:hover{color:#fff}
   .nav-links a.cta{color:var(--amber);font-weight:600}
-  @media(max-width:640px){.nav-links{gap:16px;font-size:.85rem}.nav-links a{font-size:.85rem}}
+  @media(max-width:640px){
+    .nav{flex-wrap:wrap;height:auto;padding:10px 0 12px;justify-content:center;row-gap:2px}
+    .brand{width:100%;justify-content:center}
+    .nav-links{width:100%;justify-content:center;gap:18px}
+    .nav-links a{font-size:.9rem}
+  }
 
   /* Hero */
   .hero{
